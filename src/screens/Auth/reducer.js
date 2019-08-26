@@ -27,20 +27,16 @@ const authFailed = (state, action) => {
 };
 
 const authSuccess = (state, action) => {
-  const token = action;
+  const { token } = action;
   const data = jwtDecode(token);
-  console.log(data);
   setTokenToStorage(token).then(err => {
     if (err) authFailed(err);
   });
 
   return updateObject(state, {
     loading: false,
-    username: data.username,
-    id: data.id,
-    fullname: data.fullname,
-    email: data.email,
-    token: action.token,
+    id: data.sub,
+    token: action,
   });
 };
 

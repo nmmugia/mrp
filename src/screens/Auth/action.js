@@ -46,13 +46,11 @@ export const auth = (email, password) => {
       .post('/auth', { params: { email, password } })
       .then(resp => {
         const data = JSON.parse(resp.data.result);
-        console.log(data);
         dispatch(authSuccess(data.token));
       })
       .catch(error => {
-        console.log(error);
-        // const { message } = error.response.data;
-        // dispatch(authFailed(message));
+        const { message } = error.response.data;
+        dispatch(authFailed(message));
       });
   };
 };
