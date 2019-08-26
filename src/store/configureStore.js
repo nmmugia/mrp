@@ -4,10 +4,12 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import authReducers from '../screens/Auth/reducer';
+import MOReducers from '../screens/MO/reducer';
 
 const appReducers = combineReducers({
   auth: authReducers,
   form: formReducer,
+  mo: MOReducers,
 });
 const rootReducer = (state, action) => {
   if (action.type === 'AUTH_OUT') {

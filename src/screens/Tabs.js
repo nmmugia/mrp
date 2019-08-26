@@ -1,13 +1,12 @@
 import { Navigation } from 'react-native-navigation';
-import evilIcon from 'react-native-vector-icons/EvilIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const startTabs = () => {
   Promise.all([
-    MaterialCommunityIcons.getImageSource('view-dashboard', 40),
-    evilIcon.getImageSource('calendar', 40),
-    evilIcon.getImageSource('gear', 40),
-    evilIcon.getImageSource('check', 40),
+    FontAwesome.getImageSource('gear', 40),
+    FontAwesome.getImageSource('bullhorn', 40),
+    FontAwesome.getImageSource('file-o', 40),
+    FontAwesome.getImageSource('barcode', 40),
   ]).then(sources => {
     Navigation.setRoot({
       root: {
@@ -16,10 +15,10 @@ const startTabs = () => {
           children: [
             {
               stack: {
-                children: [{ component: { name: 'app.DashboardScreen' } }],
+                children: [{ component: { name: 'app.MOScreen' } }],
                 options: {
                   bottomTab: {
-                    text: 'Dashboard',
+                    text: 'Manufacturing Orders',
                     fontSize: 12,
                     animate: false,
                     icon: sources[0],
@@ -32,60 +31,60 @@ const startTabs = () => {
                 },
               },
             },
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: 'app.HistoryScreen',
-                      options: {
-                        topBar: {
-                          visible: false,
-                          height: 0,
-                          elevation: 0,
-                        },
-                      },
-                    },
-                  },
-                ],
-                options: {
-                  bottomTab: {
-                    fontSize: 12,
-                    text: 'History',
-                    icon: sources[1],
-                  },
-                },
-              },
-            },
-            {
-              stack: {
-                children: [{ component: { name: 'app.DevicesScreen' } }],
-                options: {
-                  bottomTab: {
-                    fontSize: 12,
-                    text: 'Devices',
-                    icon: sources[3],
-                  },
-                },
-              },
-            },
-            {
-              stack: {
-                children: [{ component: { name: 'app.SettingsScreen' } }],
-                options: {
-                  bottomTab: {
-                    fontSize: 12,
-                    text: 'Settings',
-                    icon: sources[2],
-                  },
-                  topBar: {
-                    title: {
-                      text: 'Settings',
-                    },
-                  },
-                },
-              },
-            },
+            // {
+            //   stack: {
+            //     children: [
+            //       {
+            //         component: {
+            //           name: 'app.HistoryScreen',
+            //           options: {
+            //             topBar: {
+            //               visible: false,
+            //               height: 0,
+            //               elevation: 0,
+            //             },
+            //           },
+            //         },
+            //       },
+            //     ],
+            //     options: {
+            //       bottomTab: {
+            //         fontSize: 12,
+            //         text: 'Work Orders',
+            //         icon: sources[1],
+            //       },
+            //     },
+            //   },
+            // },
+            // {
+            //   stack: {
+            //     children: [{ component: { name: 'app.DevicesScreen' } }],
+            //     options: {
+            //       bottomTab: {
+            //         fontSize: 12,
+            //         text: 'Products',
+            //         icon: sources[3],
+            //       },
+            //     },
+            //   },
+            // },
+            // {
+            //   stack: {
+            //     children: [{ component: { name: 'app.SettingsScreen' } }],
+            //     options: {
+            //       bottomTab: {
+            //         fontSize: 12,
+            //         text: 'BOM',
+            //         icon: sources[2],
+            //       },
+            //       topBar: {
+            //         title: {
+            //           text: 'BOM',
+            //         },
+            //       },
+            //     },
+            //   },
+            // },
           ],
         },
       },
