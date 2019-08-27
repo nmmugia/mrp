@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Searchbar, FAB, List } from 'react-native-paper';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import CaribeScanner from './caribe';
 
 class Component extends React.Component {
   componentWillMount() {
