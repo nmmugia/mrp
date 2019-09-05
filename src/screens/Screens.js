@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../store/configureStore';
 import AuthScreen from './Auth';
 import MOScreen from './MO';
+import MOFormScreen from './AddMo';
 import Initializer from './Initializer';
 
 const store = configureStore();
@@ -11,6 +12,7 @@ const registerScreens = () => {
   // Register Screens
   Navigation.registerComponentWithRedux('app.AuthScreen', () => AuthScreen, Provider, store);
   Navigation.registerComponentWithRedux('app.MOScreen', () => MOScreen, Provider, store);
+  Navigation.registerComponentWithRedux('app.MOFormScreen', () => MOFormScreen, Provider, store);
   Navigation.registerComponentWithRedux(
     'app.InitializerScreen',
     () => Initializer,
