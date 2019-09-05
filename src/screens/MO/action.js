@@ -36,3 +36,19 @@ export const getMO = token => {
       });
   };
 };
+
+export const getMOByRef = (token, ref) => {
+  return dispatch => {
+    dispatch(getMOStart());
+    axios
+      .get('/get_mo', { params: { token, ref } })
+      .then(resp => {
+        const { data } = resp;
+        dispatch(getMOSuccess(data));
+      })
+      .catch(error => {
+        const { message } = error.response.data;
+        dispatch(getMOFailed(message));
+      });
+  };
+};

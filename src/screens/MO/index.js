@@ -5,7 +5,6 @@ import Component from './component';
 
 const mapStateToProps = state => {
   const { auth, mo } = state;
-  console.log(mo);
   return {
     isLogged: auth.token !== null,
     loading: auth.loading,

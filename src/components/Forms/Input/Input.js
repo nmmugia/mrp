@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, TextInput, Picker, StyleSheet } from 'react-nat
 import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
+import { DatePicker } from 'native-base';
 
 const style = StyleSheet.create({
   usernameInput: {
@@ -118,6 +119,15 @@ const CustomInput = props => {
             return <Picker.Item key={index} label={option.label} value={option.value} />;
           })}
         </Picker>
+      );
+      break;
+    case 'date':
+      inputElement = (
+        <DatePicker
+          selectedValue={input.value}
+          style={{ height: 50, width: 200 }}
+          onDateChange={input.onChange}
+        />
       );
       break;
     default:

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Alert } from 'react-native';
+import { View, ScrollView, Alert } from 'react-native';
 // import { getTokenFromStorage } from '../../store/utility'
 // import { Image } from 'react-native-elements';
 import PropTypes from 'prop-types';
@@ -7,16 +7,14 @@ import startTabs from '../Tabs';
 import Form from './form';
 import FormRegister from './formRegister';
 import styles from './styles';
-import { showToast } from '../../shared/utility';
 
 class Component extends React.Component {
   state = {
     loginForm: true,
   };
 
-  componentDidUpdate(prevProps) {
-    const { isLogged, error, loading, actions, successRegister } = this.props;
-    const { loginForm } = this.state;
+  componentDidUpdate() {
+    const { isLogged, error, loading, actions } = this.props;
     if (isLogged) {
       startTabs();
     }
@@ -27,10 +25,6 @@ class Component extends React.Component {
         [{ text: 'Try Again', onPress: () => actions.errorConfirmed() }],
         { cancelable: false }
       );
-    }
-    if (successRegister && !prevProps.successRegister) {
-      showToast('Registration Success. Please Login with Your New Account');
-      this.setState({ loginForm: !loginForm });
     }
   }
 

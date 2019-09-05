@@ -12,79 +12,97 @@ const startTabs = () => {
       root: {
         bottomTabs: {
           id: 'BottomTabsId',
+          options: {
+            bottomTabs: {
+              animate: true,
+              backgroundColor: '#f9f9f9',
+            },
+          },
           children: [
             {
               stack: {
                 children: [{ component: { name: 'app.MOScreen' } }],
                 options: {
+                  topBar: {
+                    visible: false,
+                  },
                   bottomTab: {
                     text: 'Manufacturing Orders',
                     fontSize: 12,
                     animate: false,
                     icon: sources[0],
-                    iconColor: '#777D71',
-                    selectedIconColor: '#373234',
-                    textColor: '#777D71',
-                    selectedTextColor: '#373234',
+                    iconColor: '#7c7bad',
+                    selectedIconColor: '#5f5e97',
+                    textColor: '#7c7bad',
+                    selectedTextColor: '#5f5e97',
                     fontFamily: 'Helvetica',
                   },
                 },
               },
             },
-            // {
-            //   stack: {
-            //     children: [
-            //       {
-            //         component: {
-            //           name: 'app.HistoryScreen',
-            //           options: {
-            //             topBar: {
-            //               visible: false,
-            //               height: 0,
-            //               elevation: 0,
-            //             },
-            //           },
-            //         },
-            //       },
-            //     ],
-            //     options: {
-            //       bottomTab: {
-            //         fontSize: 12,
-            //         text: 'Work Orders',
-            //         icon: sources[1],
-            //       },
-            //     },
-            //   },
-            // },
-            // {
-            //   stack: {
-            //     children: [{ component: { name: 'app.DevicesScreen' } }],
-            //     options: {
-            //       bottomTab: {
-            //         fontSize: 12,
-            //         text: 'Products',
-            //         icon: sources[3],
-            //       },
-            //     },
-            //   },
-            // },
-            // {
-            //   stack: {
-            //     children: [{ component: { name: 'app.SettingsScreen' } }],
-            //     options: {
-            //       bottomTab: {
-            //         fontSize: 12,
-            //         text: 'BOM',
-            //         icon: sources[2],
-            //       },
-            //       topBar: {
-            //         title: {
-            //           text: 'BOM',
-            //         },
-            //       },
-            //     },
-            //   },
-            // },
+            {
+              stack: {
+                children: [{ component: { name: 'app.MOScreen' } }],
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                  bottomTab: {
+                    text: 'Work Order',
+                    fontSize: 12,
+                    animate: false,
+                    icon: sources[1],
+                    iconColor: '#7c7bad',
+                    selectedIconColor: '#5f5e97',
+                    textColor: '#7c7bad',
+                    selectedTextColor: '#5f5e97',
+                    fontFamily: 'Helvetica',
+                  },
+                },
+              },
+            },
+            {
+              stack: {
+                children: [{ component: { name: 'app.MOScreen' } }],
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                  bottomTab: {
+                    text: 'Product',
+                    fontSize: 12,
+                    animate: false,
+                    icon: sources[2],
+                    iconColor: '#7c7bad',
+                    selectedIconColor: '#5f5e97',
+                    textColor: '#7c7bad',
+                    selectedTextColor: '#5f5e97',
+                    fontFamily: 'Helvetica',
+                  },
+                },
+              },
+            },
+            {
+              stack: {
+                children: [{ component: { name: 'app.MOScreen' } }],
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                  bottomTab: {
+                    text: 'BOM',
+                    fontSize: 12,
+                    animate: false,
+                    icon: sources[3],
+                    iconColor: '#7c7bad',
+                    selectedIconColor: '#5f5e97',
+                    textColor: '#7c7bad',
+                    selectedTextColor: '#5f5e97',
+                    fontFamily: 'Helvetica',
+                  },
+                },
+              },
+            },
           ],
         },
       },
