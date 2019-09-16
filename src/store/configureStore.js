@@ -5,11 +5,15 @@ import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import authReducers from '../screens/Auth/reducer';
 import MOReducers from '../screens/MO/reducer';
+import WOReducers from '../screens/WO/reducer';
+import ProductReducers from '../screens/Product/reducer';
 
 const appReducers = combineReducers({
   auth: authReducers,
   form: formReducer,
   mo: MOReducers,
+  wo: WOReducers,
+  product: ProductReducers,
 });
 const rootReducer = (state, action) => {
   if (action.type === 'AUTH_OUT') {

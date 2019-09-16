@@ -21,9 +21,13 @@ class Component extends React.Component {
   componentWillMount() {
     const { actions, token } = this.props;
     actions.getMO(token);
-    DeviceEventEmitter.addListener('scanCode', e => {
+    this.subscription = DeviceEventEmitter.addListener('scanCode', e => {
       actions.getMOByRef(token, e.code);
     });
+  }
+
+  componentWillUnmount() {
+    this.subscription.remove();
   }
 
   render() {
@@ -31,7 +35,26 @@ class Component extends React.Component {
     const list = data
       ? Object.keys(data).map(i => {
           return (
-            <ListItem key={i}>
+            <ListItem
+              key={i}
+              onPress={() => {
+                Navigation.push(this.props.componentId, {
+                  component: {
+                    name: 'app.MOFormScreen',
+                    passProps: {
+                      text: 'MO Form',
+                    },
+                    options: {
+                      topBar: {
+                        title: {
+                          text: 'MO Form',
+                        },
+                      },
+                    },
+                  },
+                });
+              }}
+            >
               <Left>
                 <Text>{data[i].name}</Text>
               </Left>

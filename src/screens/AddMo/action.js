@@ -21,9 +21,33 @@ export const failedAddMo = message => {
   };
 };
 
+export const getMo = token => {
+  return dispatch => {
+    dispatch(startAddMo);
+    axios
+      .get('/get_mo', { params: { token } })
+      .then(resp => {
+        const { data } = resp;
+        dispatch(successAddMo(data));
+      })
+      .catch(error => {
+        const { message } = error.response.data;
+        dispatch(successAddMo(message));
+      });
+  };
+};
+
 export const addMo = data => {
   return dispatch => {
     dispatch(startAddMo());
-    axios.post('', { params: { data } });
+    axios
+      .get('/get_mo', { params: { data } })
+      .then(resp => {
+        dispatch(successAddMo(resp));
+      })
+      .catch(error => {
+        const { message } = error.response.data;
+        dispatch(successAddMo(message));
+      });
   };
 };

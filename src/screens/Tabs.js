@@ -42,7 +42,7 @@ const startTabs = () => {
             },
             {
               stack: {
-                children: [{ component: { name: 'app.MOScreen' } }],
+                children: [{ component: { name: 'app.WOScreen' } }],
                 options: {
                   topBar: {
                     visible: false,
@@ -63,7 +63,7 @@ const startTabs = () => {
             },
             {
               stack: {
-                children: [{ component: { name: 'app.MOScreen' } }],
+                children: [{ component: { name: 'app.ProductScreen' } }],
                 options: {
                   topBar: {
                     visible: false,

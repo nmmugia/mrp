@@ -1,9 +1,8 @@
 import axios from 'axios';
-
-const url = 'http://192.168.100.26:8069/api/v1';
+import { url } from '../constants';
 
 const instance = axios.create({
-  baseURL: url,
+  baseURL: `${url}/api/v1`,
 });
 
 export default instance;
