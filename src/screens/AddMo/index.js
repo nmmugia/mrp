@@ -4,13 +4,14 @@ import * as actions from './action';
 import Component from './component';
 
 const mapStateToProps = state => {
-  const { auth, mo } = state;
+  const { auth, addMo, product } = state;
   return {
     isLogged: auth.token !== null,
     loading: auth.loading,
     error: auth.error,
     token: auth.token.token,
-    data: mo.data,
+    data: addMo.data,
+    product: product.data,
   };
 };
 
