@@ -4,6 +4,7 @@ import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import { DatePicker } from 'native-base';
+import { placeholder } from '@babel/types';
 
 const style = StyleSheet.create({
   usernameInput: {
@@ -22,8 +23,9 @@ const style = StyleSheet.create({
 });
 
 const CustomInput = props => {
-  const { input, meta, type, options, ...inputProps } = props;
+  const { input, meta, type, options, placeHolderText, ...inputProps } = props;
   let inputElement = null;
+  console.log(props);
   const [isSecureText, setSecureText] = useState(true);
   switch (type) {
     case 'text':
@@ -33,13 +35,14 @@ const CustomInput = props => {
           leftIcon={<Icon color="#5b5b5b" size={14} name={props.icon} style={{ marginRight: 4 }} />}
           inputContainerStyle={style.usernameInput}
           onChangeText={input.onChange}
-          inputStyle={style.inputCustom}
           onBlur={input.onBlur}
+          inputStyle={style.inputCustom}
           onFocus={input.onFocus}
           placeholderStyle={{ fontSize: 12 }}
           errorStyle={{ color: 'red', marginTop: 2 }}
           errorMessage={meta.visited && !meta.active && meta.invalid ? meta.error : ''}
           leftIconContainerStyle={{ marginLeft: 0 }}
+          value={meta.initial}
         />
       );
       break;
@@ -50,7 +53,7 @@ const CustomInput = props => {
           leftIcon={<Icon color="#5b5b5b" size={14} name={props.icon} style={{ marginRight: 4 }} />}
           inputContainerStyle={{ ...style.usernameInput, backgroundColor: '#eaeaea' }}
           onChangeText={input.onChange}
-          editable={false}
+          disabled
           inputStyle={{ color: '#777777', fontSize: 13 }}
           onBlur={input.onBlur}
           onFocus={input.onFocus}
@@ -58,7 +61,7 @@ const CustomInput = props => {
           errorStyle={{ color: 'red', marginTop: 2 }}
           errorMessage={meta.visited && !meta.active && meta.invalid ? meta.error : ''}
           leftIconContainerStyle={{ marginLeft: 0 }}
-          value={input.value ? input.value : meta.initial}
+          value={meta.initial}
         />
       );
       break;
@@ -115,9 +118,11 @@ const CustomInput = props => {
           style={{ height: 50, width: 200 }}
           onValueChange={input.onChange}
         >
-          {options.map((option, index) => {
-            return <Picker.Item key={index} label={option.label} value={option.value} />;
-          })}
+          {options
+            ? Object.keys(options).map(i => {
+                return <Picker.Item key={i} label={options[i].label} value={options[i].value} />;
+              })
+            : null}
         </Picker>
       );
       break;
@@ -127,6 +132,7 @@ const CustomInput = props => {
           selectedValue={input.value}
           style={{ height: 50, width: 200 }}
           onDateChange={input.onChange}
+          placeHolderText={placeHolderText}
         />
       );
       break;
@@ -138,7 +144,6 @@ const CustomInput = props => {
           onChangeText={input.onChange}
           onBlur={input.onBlur}
           onFocus={input.onFocus}
-          value={input.value}
         />
       );
   }
@@ -152,6 +157,7 @@ CustomInput.propTypes = {
   type: PropTypes.string,
   options: PropTypes.object,
   icon: PropTypes.string,
+  placeHolderText: PropTypes.string,
 };
 
 export default CustomInput;

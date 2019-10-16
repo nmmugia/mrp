@@ -5,8 +5,8 @@ const startTabs = () => {
   Promise.all([
     FontAwesome.getImageSource('gear', 40),
     FontAwesome.getImageSource('bullhorn', 40),
-    FontAwesome.getImageSource('file-o', 40),
     FontAwesome.getImageSource('barcode', 40),
+    FontAwesome.getImageSource('file-o', 40),
   ]).then(sources => {
     Navigation.setRoot({
       root: {
@@ -84,7 +84,7 @@ const startTabs = () => {
             },
             {
               stack: {
-                children: [{ component: { name: 'app.MOScreen' } }],
+                children: [{ component: { name: 'app.BOMScreen' } }],
                 options: {
                   topBar: {
                     visible: false,

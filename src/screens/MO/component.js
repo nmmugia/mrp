@@ -43,6 +43,7 @@ class Component extends React.Component {
                     name: 'app.MOFormScreen',
                     passProps: {
                       text: 'MO Form',
+                      id: i,
                     },
                     options: {
                       topBar: {

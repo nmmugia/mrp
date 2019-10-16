@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { Item, Label } from 'native-base';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import { validate } from './validation';
 import Input from '../../components/Forms/Input/Input';
 // import { validateRegister } from './validation';
 
@@ -92,7 +93,7 @@ form.propTypes = {
 };
 const createReduxForm = reduxForm({
   form: 'moForm',
-  enableReinitialize: true
+  validate,
 });
 const formComponent = createReduxForm(form);
 
